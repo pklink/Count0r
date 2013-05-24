@@ -39,9 +39,10 @@ public final class R {
         public static final int btn_decrement=0x7f050002;
         public static final int btn_increment=0x7f050003;
         public static final int btn_reset=0x7f050004;
-        public static final int hello_world=0x7f050005;
-        public static final int txt_count=0x7f050006;
-        public static final int txt_count_init_value=0x7f050007;
+        public static final int reset_confirm_negative=0x7f050005;
+        public static final int reset_confirm_positive=0x7f050006;
+        public static final int reset_confirm_title=0x7f050007;
+        public static final int txt_count_init_value=0x7f050008;
     }
     public static final class style {
         /** 

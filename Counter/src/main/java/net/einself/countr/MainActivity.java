@@ -1,5 +1,8 @@
 package net.einself.countr;
 
+import android.app.AlertDialog;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
@@ -32,14 +35,11 @@ public class MainActivity extends Activity {
         ((Button) findViewById(R.id.increment)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // MainActivity holen
-                MainActivity activity = (MainActivity) view.getContext();
-
                 // Counter erhoehen
-                activity.getItem().increment();
+                item.increment();
 
                 // Neuen Counterstand setzen
-                activity.getCounter().setText(activity.getItem().getCount().toString());
+                counter.setText(item.getCount().toString());
             }
         });
 
@@ -47,14 +47,11 @@ public class MainActivity extends Activity {
         ((Button) findViewById(R.id.decrement)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // MainActivity holen
-                MainActivity activity = (MainActivity) view.getContext();
-
                 // Counter erniedrigen
-                activity.getItem().decrement();
+                item.decrement();
 
                 // Neuen Counterstand setzen
-                activity.getCounter().setText( activity.getItem().getCount().toString() );
+                counter.setText( item.getCount().toString() );
             }
         });
 
@@ -62,25 +59,20 @@ public class MainActivity extends Activity {
         ((Button) findViewById(R.id.btnReset)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // get MainActivity
-                MainActivity ma = (MainActivity) view.getContext();
-
-                // set countr to 0
-                ma.getItem().setCount(0);
-
-                // set new countr value to view
-                ma.getCounter().setText( ma.getItem().getCount().toString() );
+                // Create confirm-dialog
+                new AlertDialog.Builder(view.getContext())
+                        .setTitle("Reset counter to 0?")
+                        .setPositiveButton(R.string.reset_confirm_positive, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+                                item.setCount(0);
+                                counter.setText("0");
+                            }
+                        })
+                        .setNegativeButton(R.string.reset_confirm_negative, null)
+                        .show();
             }
         });
-    }
-
-
-    public Item getItem() {
-        return item;
-    }
-
-    public TextView getCounter() {
-        return counter;
     }
 
 

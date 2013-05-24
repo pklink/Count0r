@@ -11,8 +11,9 @@
     <string name="btn_decrement">-</string>
     <string name="btn_increment">+</string>
     <string name="btn_reset">Reset</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="txt_count">Count:</string>
+    <string name="reset_confirm_negative">Cancel</string>
+    <string name="reset_confirm_positive">OK</string>
+    <string name="reset_confirm_title">Reset counter to 0?</string>
     <string name="txt_count_init_value">0</string>
 
     <style name="AppBaseTheme" parent="android:Theme.Light">
