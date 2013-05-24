@@ -1,0 +1,48 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity" android:alpha="1">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent">
+        <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="51dp" android:layout_gravity="left|center_vertical"
+                android:layout_weight="1" android:background="#c5eaf8"
+                android:paddingLeft="@dimen/activity_vertical_margin">
+            <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/txtCount" android:background="#c5eaf8" android:text="0"
+                    android:phoneNumber="false" android:autoText="false" android:layout_weight="1"
+                    android:textSize="@dimen/txt_counter_value" android:singleLine="true" android:enabled="true"
+                    android:gravity="fill_vertical" android:clickable="true"/>
+            <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="@string/btn_reset"
+                    android:id="@+id/btnReset" android:layout_weight="2"
+                    android:background="#a8dff4"/>
+        </LinearLayout>
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_increment"
+                android:id="@+id/increment"
+                android:layout_below="@+id/item" android:layout_alignLeft="@+id/item"
+                android:layout_alignParentRight="true" android:background="#0099CC"
+                android:layout_weight="10" android:textSize="@dimen/btn_font_size"/>
+        <Button
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_decrement"
+                android:id="@+id/decrement"
+                android:layout_below="@+id/increment" android:layout_alignLeft="@+id/increment"
+                android:layout_alignRight="@+id/increment" android:background="#33B5E5" android:layout_weight="10"
+                android:textSize="@dimen/btn_font_size"/>
+    </LinearLayout>
+</RelativeLayout>
