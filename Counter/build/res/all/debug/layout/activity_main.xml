@@ -10,9 +10,8 @@
             android:layout_height="fill_parent">
         <LinearLayout
                 android:layout_width="fill_parent"
-                android:layout_height="51dp" android:layout_gravity="left|center_vertical"
-                android:layout_weight="1" android:background="#c5eaf8"
-                android:paddingLeft="@dimen/activity_vertical_margin">
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
             <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -20,7 +19,8 @@
                     android:id="@+id/txtCount" android:background="#c5eaf8" android:text="0"
                     android:phoneNumber="false" android:autoText="false" android:layout_weight="1"
                     android:textSize="@dimen/txt_counter_value" android:singleLine="true" android:enabled="true"
-                    android:gravity="fill_vertical" android:clickable="true"/>
+                    android:gravity="fill_vertical" android:clickable="true"
+                    android:paddingLeft="@dimen/activity_horizontal_margin"/>
             <Button
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
@@ -28,21 +28,27 @@
                     android:id="@+id/btnReset" android:layout_weight="2"
                     android:background="#a8dff4"/>
         </LinearLayout>
-        <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_increment"
-                android:id="@+id/increment"
-                android:layout_below="@+id/item" android:layout_alignLeft="@+id/item"
-                android:layout_alignParentRight="true" android:background="#0099CC"
-                android:layout_weight="10" android:textSize="@dimen/btn_font_size"/>
-        <Button
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/btn_decrement"
-                android:id="@+id/decrement"
-                android:layout_below="@+id/increment" android:layout_alignLeft="@+id/increment"
-                android:layout_alignRight="@+id/increment" android:background="#33B5E5" android:layout_weight="10"
-                android:textSize="@dimen/btn_font_size"/>
+	    <LinearLayout
+			    android:orientation="vertical"
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content" android:layout_weight="9">
+		    <Button
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:text="@string/btn_increment"
+	                android:id="@+id/increment"
+	                android:layout_below="@+id/item" android:layout_alignLeft="@+id/item"
+	                android:layout_alignParentRight="true" android:background="#0099CC"
+	                android:textSize="@dimen/btn_font_size" android:enabled="true"
+	                android:layout_weight="1"/>
+		    <Button
+	                android:layout_width="fill_parent"
+	                android:layout_height="wrap_content"
+	                android:text="@string/btn_decrement"
+	                android:id="@+id/decrement"
+	                android:layout_below="@+id/increment" android:layout_alignLeft="@+id/increment"
+	                android:layout_alignRight="@+id/increment" android:background="#33B5E5"
+	                android:textSize="@dimen/btn_font_size" android:layout_weight="1"/>
+	    </LinearLayout>
     </LinearLayout>
 </RelativeLayout>

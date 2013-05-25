@@ -2,7 +2,6 @@
 <resources>
 
 	<string name="app_name">countr</string>
-	<string name="action_settings">Settings</string>
 	<string name="btn_increment">+</string>
 	<string name="btn_decrement">-</string>
 	<string name="txt_count_init_value">0</string>
@@ -10,4 +9,7 @@
 	<string name="reset_confirm_title">Reset counter to 0?</string>
 	<string name="reset_confirm_positive">OK</string>
 	<string name="reset_confirm_negative">Cancel</string>
+	<string name="action_visibility_both">Show both buttons</string>
+	<string name="action_visibility_only_plus">Show only plus-button</string>
+	<string name="action_visibility_only_minus">Show only minus-button</string>
 </resources>

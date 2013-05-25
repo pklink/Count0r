@@ -6,7 +6,9 @@
     <dimen name="btn_font_size">20dp</dimen>
     <dimen name="txt_counter_value">40dp</dimen>
 
-    <string name="action_settings">Settings</string>
+    <string name="action_visibility_both">Show both buttons</string>
+    <string name="action_visibility_only_minus">Show only minus-button</string>
+    <string name="action_visibility_only_plus">Show only plus-button</string>
     <string name="app_name">countr</string>
     <string name="btn_decrement">-</string>
     <string name="btn_increment">+</string>
