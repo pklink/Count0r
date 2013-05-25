@@ -21,7 +21,7 @@ public class MainActivity extends Activity {
     private Button minus;
 
 
-    public TextView getCounter() {
+    protected TextView getCounter() {
         if (counter == null) {
             counter = (TextView) findViewById(R.id.etxt_count);
         }
@@ -30,7 +30,7 @@ public class MainActivity extends Activity {
     }
 
 
-    public Button getPlus() {
+    protected Button getPlus() {
         if (plus == null) {
             plus = (Button) findViewById(R.id.btn_plus);
         }
@@ -39,7 +39,7 @@ public class MainActivity extends Activity {
     }
 
 
-    public Button getMinus() {
+    protected Button getMinus() {
         if (minus == null) {
             minus = (Button) findViewById(R.id.btn_minus);
         }
