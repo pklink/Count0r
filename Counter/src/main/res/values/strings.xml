@@ -9,6 +9,6 @@
 	<string name="btn_reset">Reset</string>
 	<string name="action_reset_counter">Reset counter</string>
 	<string name="action_visibility_both">Show both buttons</string>
-	<string name="action_visibility_only_plus">Show only plus-button</string>
-	<string name="action_visibility_only_minus">Show only minus-button</string>
+	<string name="action_visibility_only_plus">Show plus-button only</string>
+	<string name="action_visibility_only_minus">Show minus-button only</string>
 </resources>
