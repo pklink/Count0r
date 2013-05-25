@@ -1,4 +1,3 @@
-countr
-======
+# Countr
 
 Counter-App for Andoird
