@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-	<string name="app_name">countr</string>
+	<string name="app_name">Countr</string>
 	<string name="app_description">easy counting of whatever you want</string>
 	<string name="btn_plus_label">+</string>
 	<string name="btn_minus_label">-</string>
