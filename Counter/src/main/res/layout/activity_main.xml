@@ -8,15 +8,20 @@
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
-	    <TextView
+	    <LinearLayout
+			    android:orientation="vertical"
+			    android:layout_width="0dp"
+			    android:layout_height="0dp" android:focusable="true" android:focusableInTouchMode="true">
+	    </LinearLayout>
+	    <EditText
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:textAppearance="?android:attr/textAppearanceMedium"
-	            android:id="@+id/txtCount" android:background="#c5eaf8" android:text="0"
+	            android:id="@+id/etxt_count" android:background="#c5eaf8" android:text="@string/etxt_count_init_value"
 	            android:phoneNumber="false" android:autoText="false"
 	            android:textSize="@dimen/txt_counter_value" android:singleLine="true" android:enabled="true"
 	            android:gravity="fill_vertical" android:clickable="true"
-	            android:padding="@dimen/activity_horizontal_margin" android:password="false"/>
+	            android:padding="@dimen/activity_horizontal_margin" android:numeric="integer" android:maxLength="18"/>
 	    <LinearLayout
 			    android:orientation="vertical"
 			    android:layout_width="fill_parent"

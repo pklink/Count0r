@@ -5,7 +5,7 @@
 	<string name="app_description">easy counting of whatever you want</string>
 	<string name="btn_plus_label">+</string>
 	<string name="btn_minus_label">-</string>
-	<string name="txt_count_init_value">0</string>
+	<string name="etxt_count_init_value">0</string>
 	<string name="btn_reset">Reset</string>
 	<string name="action_reset_counter">Reset counter</string>
 	<string name="action_visibility_both">Show both buttons</string>

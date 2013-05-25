@@ -1,13 +1,17 @@
 package net.einself.countr;
 
 /**
- * Created by pierre on 24.05.13.
+ * @author Pierre Klink <pierre@einself.net>
  */
 public class Item {
 
     private String name = "New Counter";
 
-    private Integer count = 0;
+    private Long count = 0l;
+
+
+    public Item() {
+    }
 
 
     public String getName() {
@@ -20,12 +24,12 @@ public class Item {
     }
 
 
-    public Integer getCount() {
+    public Long getCount() {
         return count;
     }
 
 
-    public void setCount(Integer count) {
+    public void setCount(Long count) {
         this.count = count;
     }
 

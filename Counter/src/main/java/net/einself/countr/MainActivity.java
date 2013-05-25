@@ -2,6 +2,8 @@ package net.einself.countr;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -10,13 +12,40 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
-    protected Item item;
+    private Item item = new Item();
 
-    protected TextView counter;
+    private TextView counter;
 
     private Button plus;
 
     private Button minus;
+
+
+    public TextView getCounter() {
+        if (counter == null) {
+            counter = (TextView) findViewById(R.id.etxt_count);
+        }
+
+        return counter;
+    }
+
+
+    public Button getPlus() {
+        if (plus == null) {
+            plus = (Button) findViewById(R.id.btn_plus);
+        }
+
+        return plus;
+    }
+
+
+    public Button getMinus() {
+        if (minus == null) {
+            minus = (Button) findViewById(R.id.btn_minus);
+        }
+
+        return minus;
+    }
 
 
     @Override
@@ -24,40 +53,54 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Item erstellen
-        item = new Item();
-
-        // Counter setzen
-        counter = (TextView) findViewById(R.id.txtCount);
-
-        // Text fuer Counter setzen
-        counter.setText(item.getCount().toString());
-
-        // set buttons
-        plus  = (Button) findViewById(R.id.btn_plus);
-        minus = (Button) findViewById(R.id.btn_minus);
+        // set default value to UI-counter
+        getCounter().setText(item.getCount().toString());
 
         // Click-Event fuer Increment-Button erstellen
-        plus.setOnClickListener(new View.OnClickListener() {
+        getPlus().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Counter erhoehen
                 item.increment();
 
                 // Neuen Counterstand setzen
-                counter.setText(item.getCount().toString());
+                getCounter().setText(item.getCount().toString());
             }
         });
 
         // Click-Event fuer Decrement-Button erstellen
-        minus.setOnClickListener(new View.OnClickListener() {
+        getMinus().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Counter erniedrigen
                 item.decrement();
 
                 // Neuen Counterstand setzen
-                counter.setText( item.getCount().toString() );
+                getCounter().setText(item.getCount().toString());
+            }
+        });
+
+        getCounter().addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                // get value
+                String value = getCounter().getText().toString();
+
+                if (value.length() == 0 || value.equals("-")) {
+                    value = "0";
+                }
+
+                item.setCount(Long.parseLong(value));
             }
         });
     }
@@ -78,26 +121,26 @@ public class MainActivity extends Activity {
         switch (item.getItemId()) {
             // reset counter
             case R.id.action_reset_counter:
-                this.item.setCount(0);
-                counter.setText("0");
+                this.item.setCount(0l);
+                getCounter().setText("0");
                 return false;
 
             // show plus- and minus-button
             case R.id.action_visibility_both:
-                plus.setVisibility(View.VISIBLE);
-                minus.setVisibility(View.VISIBLE);
+                getPlus().setVisibility(View.VISIBLE);
+                getMinus().setVisibility(View.VISIBLE);
                 return false;
 
             // show plus-button only
             case R.id.action_visibility_only_plus:
-                plus.setVisibility(View.VISIBLE);
-                minus.setVisibility(View.GONE);
+                getPlus().setVisibility(View.VISIBLE);
+                getMinus().setVisibility(View.GONE);
                 return false;
 
             // show minus-button only
             case R.id.action_visibility_only_minus:
-                plus.setVisibility(View.GONE);
-                minus.setVisibility(View.VISIBLE);
+                getPlus().setVisibility(View.GONE);
+                getMinus().setVisibility(View.VISIBLE);
                 return false;
 
             default:
