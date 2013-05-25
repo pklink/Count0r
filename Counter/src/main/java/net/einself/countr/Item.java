@@ -9,17 +9,21 @@ public class Item {
 
     private Integer count = 0;
 
+
     public String getName() {
         return name;
     }
+
 
     public void setName(String name) {
         this.name = name;
     }
 
+
     public Integer getCount() {
         return count;
     }
+
 
     public void setCount(Integer count) {
         this.count = count;
@@ -30,7 +34,9 @@ public class Item {
         count++;
     }
 
+
     public void decrement() {
         count--;
     }
+
 }
