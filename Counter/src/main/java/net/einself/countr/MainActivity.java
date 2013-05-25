@@ -39,11 +39,11 @@ public class MainActivity extends Activity {
         counter.setText(item.getCount().toString());
 
         // set buttons
-        plus  = (Button) findViewById(R.id.increment);
-        minus = (Button) findViewById(R.id.decrement);
+        plus  = (Button) findViewById(R.id.btn_plus);
+        minus = (Button) findViewById(R.id.btn_minus);
 
         // Click-Event fuer Increment-Button erstellen
-        ((Button) findViewById(R.id.increment)).setOnClickListener(new View.OnClickListener() {
+        plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Counter erhoehen
@@ -55,7 +55,7 @@ public class MainActivity extends Activity {
         });
 
         // Click-Event fuer Decrement-Button erstellen
-        ((Button) findViewById(R.id.decrement)).setOnClickListener(new View.OnClickListener() {
+        minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Counter erniedrigen
@@ -63,25 +63,6 @@ public class MainActivity extends Activity {
 
                 // Neuen Counterstand setzen
                 counter.setText( item.getCount().toString() );
-            }
-        });
-
-        // Add onClick-Eventhandler for Reset-Button
-        ((Button) findViewById(R.id.btnReset)).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Create confirm-dialog
-                new AlertDialog.Builder(view.getContext())
-                        .setTitle("Reset counter to 0?")
-                        .setPositiveButton(R.string.reset_confirm_positive, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                item.setCount(0);
-                                counter.setText("0");
-                            }
-                        })
-                        .setNegativeButton(R.string.reset_confirm_negative, null)
-                        .show();
             }
         });
     }
@@ -94,23 +75,36 @@ public class MainActivity extends Activity {
         return true;
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         item.setChecked(true);
 
         switch (item.getItemId()) {
+            // reset counter
+            case R.id.action_reset_counter:
+                this.item.setCount(0);
+                counter.setText("0");
+                return false;
+
+            // show plus- and minus-button
             case R.id.action_visibility_both:
                 plus.setVisibility(View.VISIBLE);
                 minus.setVisibility(View.VISIBLE);
-                return true;
+                return false;
+
+            // show plus-button only
             case R.id.action_visibility_only_plus:
                 plus.setVisibility(View.VISIBLE);
                 minus.setVisibility(View.GONE);
                 return false;
+
+            // show minus-button only
             case R.id.action_visibility_only_minus:
                 plus.setVisibility(View.GONE);
                 minus.setVisibility(View.VISIBLE);
                 return false;
+
             default:
                 return super.onOptionsItemSelected(item);
         }
