@@ -22,7 +22,7 @@
 	            android:textSize="@dimen/txt_counter_value" android:singleLine="true" android:enabled="true"
 	            android:gravity="fill_vertical" android:clickable="true"
 	            android:padding="@dimen/activity_horizontal_margin" android:numeric="integer" android:maxLength="18"
-	            android:digits="- 0123456789"/>
+	            android:digits="- 0123456789" android:inputType="number"/>
 	    <LinearLayout
 			    android:orientation="vertical"
 			    android:layout_width="fill_parent"
