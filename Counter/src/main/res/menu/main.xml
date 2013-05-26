@@ -10,5 +10,21 @@
 		<item android:id="@+id/action_visibility_only_minus"
 		      android:title="@string/action_visibility_only_minus" />
 	</group>
-
+	<item android:id="@+id/action_colour_scheme"
+	      android:title="@string/action_colour_scheme">
+		<menu>
+			<group android:checkableBehavior="single">
+				<item android:id="@+id/action_colour_scheme_blue"
+				      android:title="@string/action_colour_scheme_blue" />
+				<item android:id="@+id/action_colour_scheme_orange"
+				      android:title="@string/action_colour_scheme_orange" />
+				<item android:id="@+id/action_colour_scheme_purple"
+				      android:title="@string/action_colour_scheme_purple" />
+				<item android:id="@+id/action_colour_scheme_green"
+				      android:title="@string/action_colour_scheme_green" />
+				<item android:id="@+id/action_colour_scheme_red"
+				      android:title="@string/action_colour_scheme_red" />
+			</group>
+		</menu>
+	</item>
 </menu>

@@ -28,6 +28,8 @@ public class MainActivity extends Activity {
 
     private Button minus;
 
+    private int colourScheme;
+
 
     protected TextView getCounter() {
         if (counter == null) {
@@ -67,8 +69,11 @@ public class MainActivity extends Activity {
         // set saved counter to item
         item.setCount(preferences.getLong(getString(R.string.pref_counter), 0l));
 
-        // set default value to UI-counter
+        // set value to UI-counter
         getCounter().setText(item.getCount().toString());
+
+        // set colour scheme
+        setColourScheme(preferences.getInt(getString(R.string.pref_colour_scheme), R.id.action_colour_scheme_blue));
 
         // Click-Event fuer Increment-Button erstellen
         getPlus().setOnClickListener(new View.OnClickListener() {
@@ -196,6 +201,19 @@ public class MainActivity extends Activity {
     }
 
 
+    protected void setColourScheme(int id) {
+        colourScheme        = id;
+        ColourScheme scheme = ColourScheme.Factory.create(id);
+
+        findViewById(R.id.etxt_count).setBackgroundColor(scheme.getCounter());
+        findViewById(R.id.btn_plus).setBackgroundColor(scheme.getPlusButton());
+        findViewById(R.id.btn_minus).setBackgroundColor(scheme.getMinusButton());
+        ((TextView) findViewById(R.id.etxt_count)).setTextColor(scheme.getText());
+        ((TextView) findViewById(R.id.btn_plus)).setTextColor(scheme.getText());
+        ((TextView) findViewById(R.id.btn_minus)).setTextColor(scheme.getText());
+    }
+
+
     @Override
     protected void onStop() {
         super.onStop();
@@ -205,6 +223,9 @@ public class MainActivity extends Activity {
 
         // counter
         editor.putLong(getString(R.string.pref_counter), item.getCount());
+
+        // colour scheme
+        editor.putInt(getString(R.string.pref_colour_scheme), colourScheme);
 
         // save
         editor.commit();
@@ -245,6 +266,15 @@ public class MainActivity extends Activity {
             case R.id.action_visibility_only_minus:
                 getPlus().setVisibility(View.GONE);
                 getMinus().setVisibility(View.VISIBLE);
+                return false;
+
+            // change color scheme
+            case R.id.action_colour_scheme_blue:
+            case R.id.action_colour_scheme_green:
+            case R.id.action_colour_scheme_red:
+            case R.id.action_colour_scheme_orange:
+            case R.id.action_colour_scheme_purple:
+                setColourScheme( item.getItemId() );
                 return false;
 
             default:

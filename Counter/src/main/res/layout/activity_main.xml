@@ -17,7 +17,7 @@
 	            android:layout_width="fill_parent"
 	            android:layout_height="wrap_content"
 	            android:textAppearance="?android:attr/textAppearanceMedium"
-	            android:id="@+id/etxt_count" android:background="#c5eaf8" android:text="@string/etxt_count_init_value"
+	            android:id="@+id/etxt_count" android:text="@string/etxt_count_init_value"
 	            android:phoneNumber="false" android:autoText="false"
 	            android:textSize="@dimen/txt_counter_value" android:singleLine="true" android:enabled="true"
 	            android:gravity="fill_vertical" android:clickable="true"
@@ -33,17 +33,19 @@
 	                android:text="@string/btn_plus_label"
 	                android:id="@+id/btn_plus"
 	                android:layout_below="@+id/item" android:layout_alignLeft="@+id/item"
-	                android:layout_alignParentRight="true" android:background="#0099CC"
+	                android:layout_alignParentRight="true"
 	                android:textSize="@dimen/btn_font_size"
-	                android:layout_weight="1" android:visibility="visible"/>
+	                android:layout_weight="1" android:visibility="visible"
+				    />
 		    <Button
 	                android:layout_width="fill_parent"
 	                android:layout_height="wrap_content"
 	                android:text="@string/btn_minus_label"
 	                android:id="@+id/btn_minus"
 	                android:layout_below="@+id/btn_plus" android:layout_alignLeft="@+id/btn_plus"
-	                android:layout_alignRight="@+id/btn_plus" android:background="#33B5E5"
-	                android:textSize="@dimen/btn_font_size" android:layout_weight="1"/>
+	                android:layout_alignRight="@+id/btn_plus"
+	                android:textSize="@dimen/btn_font_size" android:layout_weight="1"
+				    />
 	    </LinearLayout>
     </LinearLayout>
 </RelativeLayout>
