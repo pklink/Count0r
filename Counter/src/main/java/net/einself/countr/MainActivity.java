@@ -1,5 +1,7 @@
 package net.einself.countr;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
 import android.text.Editable;
@@ -58,6 +60,12 @@ public class MainActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        // get shared preferences
+        SharedPreferences preferences = getPreferences(Context.MODE_PRIVATE);
+
+        // set saved counter to item
+        item.setCount(preferences.getLong(getString(R.string.pref_counter), 0l));
 
         // set default value to UI-counter
         getCounter().setText(item.getCount().toString());
@@ -187,6 +195,20 @@ public class MainActivity extends Activity {
         });
     }
 
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
+        SharedPreferences preferences   = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = preferences.edit();
+
+        // counter
+        editor.putLong(getString(R.string.pref_counter), item.getCount());
+
+        // save
+        editor.commit();
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {

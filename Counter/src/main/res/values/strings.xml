@@ -13,4 +13,6 @@
 	<string name="action_visibility_only_minus">Show minus-button only</string>
 
 	<string name="error_invalid_long">Value of counter is invalid</string>
+
+	<string name="pref_counter">pref-counter</string>
 </resources>
