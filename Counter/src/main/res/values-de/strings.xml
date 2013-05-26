@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+	<string name="app_description">easy counting of whatever you want</string>
+	<string name="btn_plus_label">+</string>
+	<string name="btn_minus_label">-</string>
+
+	<string name="action_colour_scheme">Farbschema auswählen</string>
+	<string name="action_colour_scheme_blue">Blau</string>
+	<string name="action_colour_scheme_red">Rot</string>
+	<string name="action_colour_scheme_green">Grün</string>
+	<string name="action_colour_scheme_orange">Orange</string>
+	<string name="action_colour_scheme_purple">Lila</string>
+
+	<string name="action_reset_counter">Zähler zurücksetzen</string>
+	<string name="action_visibility_both">Zeige beide Buttons</string>
+	<string name="action_visibility_only_plus">Zeige nur Plusbutton</string>
+	<string name="action_visibility_only_minus">Zeige nur Minusbutton</string>
+
+	<!-- translations are not necessary -->
+	<string name="pref_counter">pref-counter</string>
+	<string name="pref_colour_scheme">pref-colour</string>
+	<string name="pref_button_visibility">pref-button-visibility</string>
+</resources>

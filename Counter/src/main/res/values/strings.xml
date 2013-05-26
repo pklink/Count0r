@@ -6,7 +6,6 @@
 	<string name="btn_plus_label">+</string>
 	<string name="btn_minus_label">-</string>
 	<string name="etxt_count_init_value">0</string>
-	<string name="btn_reset">Reset</string>
 
 
 	<string name="action_colour_scheme">Select colour scheme</string>
@@ -20,8 +19,6 @@
 	<string name="action_visibility_both">Show both buttons</string>
 	<string name="action_visibility_only_plus">Show plus-button only</string>
 	<string name="action_visibility_only_minus">Show minus-button only</string>
-
-	<string name="error_invalid_long">Value of counter is invalid</string>
 
 	<!-- translations are not necessary -->
 	<string name="pref_counter">pref-counter</string>
