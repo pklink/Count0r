@@ -13,15 +13,33 @@ import android.widget.TextView;
 
 public class MainActivity extends Activity {
 
+    /**
+     * the representation of the counter
+     */
     private Item item = new Item();
 
+    /**
+     * the representation of the counter
+     */
     private TextView counter;
 
+    /**
+     * the "+"-button
+     */
     private Button plus;
 
+    /**
+     * the "-"-button
+     */
     private Button minus;
 
+    /**
+     * the active colour scheme
+     */
     private int colourScheme;
+
+
+    private ButtonStatus buttonStatus;
 
 
     protected TextView getCounter() {
@@ -64,6 +82,10 @@ public class MainActivity extends Activity {
 
         // set colour scheme
         setColourScheme(preferences.getInt(getString(R.string.pref_colour_scheme), R.id.action_colour_scheme_blue));
+
+        // create ButtonStatus
+        buttonStatus = new ButtonStatus(getPlus(), getMinus());
+        buttonStatus.setStatus(preferences.getInt(getString(R.string.pref_button_visibility), ButtonStatus.STATUS_BOTH));
 
         // set listender for "+"-button
         getPlus().setOnClickListener(new View.OnClickListener() {
@@ -126,6 +148,9 @@ public class MainActivity extends Activity {
         // colour scheme
         editor.putInt(getString(R.string.pref_colour_scheme), colourScheme);
 
+        // button visibility
+        editor.putInt(getString(R.string.pref_button_visibility), buttonStatus.getStatus());
+
         // save
         editor.commit();
     }
@@ -135,8 +160,26 @@ public class MainActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
+
+        // set selected item for button-visibility
+        switch (buttonStatus.getStatus()) {
+            case ButtonStatus.STATUS_PLUS_ONLY:
+                menu.findItem(R.id.action_visibility_only_plus).setChecked(true);
+                break;
+
+            case ButtonStatus.STATUS_MINUS_ONLY:
+                menu.findItem(R.id.action_visibility_only_minus).setChecked(true);
+                break;
+
+            case ButtonStatus.STATUS_BOTH:
+            default:
+                menu.findItem(R.id.action_visibility_both).setChecked(true);
+        }
+
         return true;
     }
+
+
 
 
     @Override
@@ -152,20 +195,17 @@ public class MainActivity extends Activity {
 
             // show plus- and minus-button
             case R.id.action_visibility_both:
-                getPlus().setVisibility(View.VISIBLE);
-                getMinus().setVisibility(View.VISIBLE);
+                buttonStatus.showBoth();
                 return false;
 
             // show plus-button only
             case R.id.action_visibility_only_plus:
-                getPlus().setVisibility(View.VISIBLE);
-                getMinus().setVisibility(View.GONE);
+                buttonStatus.showPlusOnly();
                 return false;
 
             // show minus-button only
             case R.id.action_visibility_only_minus:
-                getPlus().setVisibility(View.GONE);
-                getMinus().setVisibility(View.VISIBLE);
+                buttonStatus.showMinusOnly();
                 return false;
 
             // change color scheme

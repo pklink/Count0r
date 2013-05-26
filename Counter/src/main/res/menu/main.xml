@@ -3,8 +3,7 @@
 	      android:title="@string/action_reset_counter" />
 	<group android:checkableBehavior="single">
 		<item android:id="@+id/action_visibility_both"
-		      android:title="@string/action_visibility_both"
-			  android:checked="true" />
+		      android:title="@string/action_visibility_both" />
 		<item android:id="@+id/action_visibility_only_plus"
 		      android:title="@string/action_visibility_only_plus" />
 		<item android:id="@+id/action_visibility_only_minus"
