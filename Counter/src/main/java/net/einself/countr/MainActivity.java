@@ -176,6 +176,9 @@ public class MainActivity extends Activity {
                 menu.findItem(R.id.action_visibility_both).setChecked(true);
         }
 
+        // set selected item for colour scheme
+        menu.findItem(colourScheme).setChecked(true);
+
         return true;
     }
 
