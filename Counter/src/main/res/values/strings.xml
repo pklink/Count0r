@@ -11,4 +11,6 @@
 	<string name="action_visibility_both">Show both buttons</string>
 	<string name="action_visibility_only_plus">Show plus-button only</string>
 	<string name="action_visibility_only_minus">Show minus-button only</string>
+
+	<string name="error_invalid_long">Value of counter is invalid</string>
 </resources>

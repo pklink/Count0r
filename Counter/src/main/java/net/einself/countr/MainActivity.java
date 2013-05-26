@@ -3,12 +3,16 @@ package net.einself.countr;
 import android.os.Bundle;
 import android.app.Activity;
 import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
 import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.text.NumberFormat;
 import java.util.Locale;
 
@@ -84,6 +88,44 @@ public class MainActivity extends Activity {
         });
 
 
+        getCounter().setFilters(new InputFilter[]{
+                new InputFilter() {
+                    @Override
+                    public CharSequence filter(CharSequence charSequence, int i, int i2, Spanned spanned, int i3, int i4) {
+                        if (charSequence.length() == 0 || spanned.length() == 0) {
+                            return null;
+                        }
+
+                        // everythin on position 0 is invalid if the first char of existing value '-'
+                        if (spanned.charAt(0) == '-' && i3 == 0) {
+                            return "";
+                        }
+
+                        // if first char of insertion is '-' and the target is not position 0 => invalid
+                        if (charSequence.charAt(0) == '-' && i3 != 0) {
+                            return "";
+                        }
+
+                        // create StringBuilder for the new CharSequence
+                        StringBuilder insertion = new StringBuilder(32);
+
+                        // add first char
+                        insertion.append(charSequence.charAt(0));
+
+                        // remove '-' in the rest of the CharSequence
+                        if (charSequence.length() > 1) {
+                            String substring = charSequence.toString().substring(1);
+                            substring        = substring.replace("-", "");
+
+                            insertion.append(substring);
+                        }
+
+                        return insertion.toString();
+                    }
+                }
+        });
+
+
         getCounter().addTextChangedListener(new TextWatcher() {
 
             private boolean formatIsInProcess = false;
@@ -111,12 +153,30 @@ public class MainActivity extends Activity {
                     // flag formatting process as active
                     formatIsInProcess = true;
 
-                    // format value
-                    value = NumberFormat.getInstance(Locale.US).format( Long.parseLong(value) ).replace(",", " ");
+                    try {
+                        // parse value to long
+                        long longValue = Long.parseLong(value);
 
-                    // set formatted value in editable
-                    editable.clear();
-                    editable.append(value);
+                        // format value
+                        value = NumberFormat.getInstance(Locale.US).format( longValue ).replace(",", " ");
+
+                        // set formatted value in editable
+                        editable.clear();
+                        editable.append(value);
+                    } catch (NumberFormatException e) {
+                        formatIsInProcess = false;
+
+                        // save current value of counter
+                        long counterValue = item.getCount();
+
+                        // show message
+                        Toast.makeText(getBaseContext(), getString(R.string.error_invalid_long), Toast.LENGTH_SHORT).show();
+
+                        // zahl ist zu gross oder so
+                        editable.clear();
+                        editable.append( String.valueOf(counterValue) );
+                        return;
+                    }
 
                     // unflag formatting process as active
                     formatIsInProcess = false;
