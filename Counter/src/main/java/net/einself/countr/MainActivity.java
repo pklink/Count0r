@@ -62,9 +62,6 @@ public class MainActivity extends Activity {
         // set saved counter to item
         item.setCount(preferences.getLong(getString(R.string.pref_counter), 0l));
 
-        // set value to UI-counter
-        getCounter().setText(item.getCount().toString());
-
         // set colour scheme
         setColourScheme(preferences.getInt(getString(R.string.pref_colour_scheme), R.id.action_colour_scheme_blue));
 
@@ -97,6 +94,9 @@ public class MainActivity extends Activity {
 
         // set listener for UI-Counter field
         getCounter().addTextChangedListener(new CounterTextChangeListener(item));
+
+        // set value to UI-counter
+        getCounter().setText(item.getCount().toString());
     }
 
 
@@ -129,6 +129,7 @@ public class MainActivity extends Activity {
         // save
         editor.commit();
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
