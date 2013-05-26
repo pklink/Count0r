@@ -4,18 +4,12 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.app.Activity;
-import android.text.Editable;
 import android.text.InputFilter;
-import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import java.text.NumberFormat;
-import java.util.Locale;
 
 public class MainActivity extends Activity {
 
@@ -74,7 +68,7 @@ public class MainActivity extends Activity {
         // set colour scheme
         setColourScheme(preferences.getInt(getString(R.string.pref_colour_scheme), R.id.action_colour_scheme_blue));
 
-        // Click-Event fuer Increment-Button erstellen
+        // set listender for "+"-button
         getPlus().setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,7 +79,6 @@ public class MainActivity extends Activity {
                 getCounter().setText(item.getCount().toString());
             }
         });
-
 
         // set listener for "-"-button
         getMinus().setOnClickListener(new View.OnClickListener() {
@@ -102,66 +95,8 @@ public class MainActivity extends Activity {
         // set filter for UI-counter field
         getCounter().setFilters(new InputFilter[]{ new CounterFilter() });
 
-
-        getCounter().addTextChangedListener(new TextWatcher() {
-
-            private boolean formatIsInProcess = false;
-
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i2, int i3) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                // get value
-                String value = editable.toString().replace(" ", "");
-
-                if (value.length() == 0 || "-".equals(value)) {
-                    value = "0";
-                }
-
-                if (!formatIsInProcess) {
-                    // flag formatting process as active
-                    formatIsInProcess = true;
-
-                    try {
-                        // parse value to long
-                        long longValue = Long.parseLong(value);
-
-                        // format value
-                        value = NumberFormat.getInstance(Locale.US).format( longValue ).replace(",", " ");
-
-                        // set formatted value in editable
-                        editable.clear();
-                        editable.append(value);
-                    } catch (NumberFormatException e) {
-                        formatIsInProcess = false;
-
-                        // save current value of counter
-                        long counterValue = item.getCount();
-
-                        // show message
-                        Toast.makeText(getBaseContext(), getString(R.string.error_invalid_long), Toast.LENGTH_SHORT).show();
-
-                        // zahl ist zu gross oder so
-                        editable.clear();
-                        editable.append( String.valueOf(counterValue) );
-                        return;
-                    }
-
-                    // unflag formatting process as active
-                    formatIsInProcess = false;
-                }
-
-                item.setCount(Long.parseLong(value.replace(" ", "")));
-            }
-        });
+        // set listener for UI-Counter field
+        getCounter().addTextChangedListener(new CounterTextChangeListener(item));
     }
 
 
